@@ -45,7 +45,12 @@ func handlerAddFeed(s *state, cmd command) error {
 		FeedData:  newFeed,
 		FeedOwner: s.cfg.CurrentUserName,
 	})
-	
+
+	err = FollowFeed(s, feedURL, user)
+	if err != nil {
+		return err
+	}
+
 	return nil
 }
 
